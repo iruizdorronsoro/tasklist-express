@@ -1,0 +1,8 @@
+include includes/header
+span task
+
+form(action="/router/task" method="post")
+	input(placeholder="Title" type="text" name="title")
+	input(placeholder="Description" type="textarea" name="description")
+	input(type="checkbox" name="isPublic")
+	button(type="submit") Enter
