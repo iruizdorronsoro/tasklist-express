@@ -1,8 +1,8 @@
 include includes/header
-span task
+span New task
 
-form(action="/router/task" method="post")
+form(action="/task" method="post")
 	input(placeholder="Title" type="text" name="title")
 	input(placeholder="Description" type="textarea" name="description")
-	input(type="checkbox" name="isPublic")
+	input(type="checkbox" name="isPublic" value)
 	button(type="submit") Enter

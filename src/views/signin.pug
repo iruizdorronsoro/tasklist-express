@@ -1,7 +1,9 @@
-include includes/header
 span Signin
 
-form(action="/router/signin" method="post")
+form(action="/signin" method="post")
 	input(placeholder="Email" type="text" name="email")
 	input(placeholder="Password" type="password" name="password")
 	button(type="submit") Enter
+
+form(action="/signup" )
+	button(type="submit") Register

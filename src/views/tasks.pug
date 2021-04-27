@@ -1,2 +1,11 @@
 include includes/header
-span Task list
+h2 Task list
+
+ul
+	each task in tasklist
+		li= task.title + ': ' + task.description
+
+form(action="/task")
+	button(type="submit") Create task
+
+

@@ -9,7 +9,7 @@ const { auth } = middlewares
 router.post('/signin', controllers.api.auth.signIn)
 
 router.post('/signup',
-	auth.verifyUser,
+	auth.verifyUserRegistration,
 	controllers.api.auth.signUp
 )
 

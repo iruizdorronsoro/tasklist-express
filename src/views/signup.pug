@@ -1,2 +1,7 @@
-include includes/header
 span Signup
+
+form(action="/signup" method="post")
+	input(placeholder="Username" type="text" name="username")
+	input(placeholder="Email" type="text" name="email")
+	input(placeholder="Password" type="password" name="password")
+	button(type="submit") Enter

@@ -1,4 +1,5 @@
 import middlewares from '../middlewares'
+import user from './api/user.controller'
 
 const { auth } = middlewares
 
@@ -13,7 +14,9 @@ const signUp = (req, res) => {
 }
 
 const profile = (req, res) => {
-	res.render('profile.pug')
+	const user = req.session.user
+	console.log(user)
+	res.render('profile.pug', {user})
 }
 
 const users = (req, res) => {
@@ -21,7 +24,14 @@ const users = (req, res) => {
 	res.render('users.pug')
 }
 
+const tasks = async (req, res) => {
+	const tasklist = await user.getTasks(req)
+  console.log("XXX - " + tasklist)
+	res.render('tasks.pug', {tasklist})
+}
+
 const task = (req, res) => {
+
 	res.render('task.pug')
 }
 
@@ -34,6 +44,7 @@ export default {
 	signUp,
 	profile,
 	users,
+	tasks,
 	task,
 	editTask
 }

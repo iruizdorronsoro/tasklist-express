@@ -12,14 +12,6 @@ const taskSchema = new Schema({
 	isPublic: {
 		type: Boolean,
 		required: true
-	},
-	createdAt: {
-		type: Date,
-		required: true
-	},
-	updatedAt: {
-		type: Date,
-		required: true
 	}
 },{
 	versionKey: false,

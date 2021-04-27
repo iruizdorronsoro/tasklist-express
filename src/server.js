@@ -2,16 +2,16 @@ import express from 'express'
 import http from "http";
 import routes from './routes'
 import pug from 'pug'
-import path from "path";
+import path from "path"
 import morgan from 'morgan'
 import config from './config'
-
-import session from 'express-session'
-import ConnectMongoDBSession from 'connect-mongodb-session'
+import cors from 'cors'
 
 const app = express()
 const server = http.createServer(app)
 
+import session from 'express-session'
+import ConnectMongoDBSession from 'connect-mongodb-session'
 const MongoDBStore = ConnectMongoDBSession(session)
 const store = new MongoDBStore({
 	uri: config.session.db.uri,
@@ -27,14 +27,12 @@ app.set('views', path.join(__dirname, 'views'))
 //Middlewares
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(session({
-	name: 'cookie-name',
 	secret: config.session.secret,
-	//Update db data every
-	resave: false,
-	//Save session data before initialize it
-	saveUninitialized: false,
+	resave: true,
+	saveUninitialized: true,
 	store,
 	cookie: {
 		maxAge: 1000 * 60 * 60
@@ -42,12 +40,13 @@ app.use(session({
 }))
 
 // Pages
-app.use('/pages', routes.pages)
+app.use('/', routes.pages)
+app.use('/', routes.session.router) // backend
 
 // API
-app.use('/api/auth', routes.api.auth)
-app.use('/api/user', routes.api.user)
-app.use('/api/admin', routes.api.admin)
+app.use('/', routes.api.auth)
+app.use('/', routes.api.user)
+app.use('/', routes.api.admin)
 
 //Public
 
