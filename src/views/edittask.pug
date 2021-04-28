@@ -1,2 +1,6 @@
 include includes/header
 span edit task
+
+input(placeholder="Title" type="text" name="email" value=`${task.title}`)
+input(placeholder="Description" type="text" name="username" value=`${task.description}`)
+input(type="checkbox" name="isPublic" value=${task.isPublic})

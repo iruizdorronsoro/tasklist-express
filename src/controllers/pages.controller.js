@@ -26,7 +26,6 @@ const users = (req, res) => {
 
 const tasks = async (req, res) => {
 	const tasklist = await user.getTasks(req)
-  console.log("XXX - " + tasklist)
 	res.render('tasks.pug', {tasklist})
 }
 
