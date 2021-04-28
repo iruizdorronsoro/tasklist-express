@@ -1,6 +1,4 @@
 import models from '../../models'
-import jwt from 'jsonwebtoken'
-import config from '../../config'
 
 const signIn = async (req, res) => {
 	try {

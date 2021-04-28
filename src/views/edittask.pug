@@ -1,6 +1,8 @@
 include includes/header
-span edit task
+h2 edit task
 
-input(placeholder="Title" type="text" name="email" value=`${task.title}`)
-input(placeholder="Description" type="text" name="username" value=`${task.description}`)
-input(type="checkbox" name="isPublic" value=${task.isPublic})
+form(action="/task/" + task._id method="post")
+	input(placeholder="Title" type="text" name="title" value=`${task.title}`)
+	input(placeholder="Description" type="text" name="description" value=`${task.description}`)
+	input(type="checkbox" name="isPublic" checked=task.isPublic value)
+	button(type="submit") Enter

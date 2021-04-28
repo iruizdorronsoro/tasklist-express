@@ -4,7 +4,7 @@ h2 Task list
 ul
 	each task in tasklist
 		li= task.title + ': ' + task.description
-			form(action="/edittask/" + task._id)
+			form(action="/task/" + task._id)
 				button(type="submit") Edit
 			form(action="/deletetask/" + task._id method="post")
 				button(type="submit") Delete

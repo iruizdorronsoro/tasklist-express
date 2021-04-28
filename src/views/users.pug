@@ -1,4 +1,8 @@
 include includes/header
-span users
-form(action="/router/signout" method="post")
-	button(id="submit") Sign Out
+h2 users
+
+ul
+	each user in users
+		li= user.username
+			form(action="/deleteuser/" + user._id method="post")
+				button(type="submit") Delete
